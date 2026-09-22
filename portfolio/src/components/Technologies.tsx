@@ -1,48 +1,82 @@
+import { Layers } from 'lucide-react'
 import {
-  Code2,
-  Database,
-  Layers,
-  Layout,
-  Server,
-  Terminal,
-  Wrench,
-} from 'lucide-react'
+  siC,
+  siPython,
+  siOpenjdk,
+  siJavascript,
+  siHtml5,
+  siCss,
+  siReact,
+  siTailwindcss,
+  siNodedotjs,
+  siExpress,
+  siMysql,
+  siMongodb,
+  siPostgresql,
+  siGit,
+  siGithub,
+  siPostman,
+} from 'simple-icons'
+
 import { portfolioData } from '../data/portfolioData'
 
-export function Technologies() {
-  const categories = [
-    {
-      title: 'Languages',
-      icon: Terminal,
-      items: portfolioData.technologies.languages,
-      description: 'Core programming languages for algorithmic problem solving and system development.',
-    },
-    {
-      title: 'Frontend',
-      icon: Layout,
-      items: portfolioData.technologies.frontend,
-      description: 'Modern component-driven web interfaces, responsive styling, and UI architectures.',
-    },
-    {
-      title: 'Backend',
-      icon: Server,
-      items: portfolioData.technologies.backend,
-      description: 'RESTful API construction, server architecture, and microservices.',
-    },
-    {
-      title: 'Databases',
-      icon: Database,
-      items: portfolioData.technologies.databases,
-      description: 'Relational data modeling, NoSQL document stores, and query optimization.',
-    },
-    {
-      title: 'Tools',
-      icon: Wrench,
-      items: portfolioData.technologies.tools,
-      description: 'Version control, developer toolchains, containerization, and API verification.',
-    },
-  ]
+// Custom VS Code SVG path (not in simple-icons — using official Microsoft design)
+const vscodeIcon = {
+  path: 'M17.583 1.039l-9.96 9.116L2.682 6.27.284 8.003l2.696 2.997-2.696 2.997 2.398 1.733 4.941-3.885 9.96 9.117 3.934-1.901V2.94L17.583 1.04zM19.5 6.177v11.646l-7.76-5.823 7.76-5.823z',
+  title: 'Visual Studio Code',
+}
 
+// Named map — only required icons bundled, nothing more
+const iconMap: Record<string, { path: string; title: string }> = {
+  c: siC,
+  python: siPython,
+  openjdk: siOpenjdk,
+  javascript: siJavascript,
+  html5: siHtml5,
+  css: siCss,
+  react: siReact,
+  tailwindcss: siTailwindcss,
+  nodedotjs: siNodedotjs,
+  express: siExpress,
+  mysql: siMysql,
+  mongodb: siMongodb,
+  postgresql: siPostgresql,
+  git: siGit,
+  github: siGithub,
+  vscode: vscodeIcon,
+  postman: siPostman,
+}
+
+interface TechIconProps {
+  slug: string
+}
+
+function TechIcon({ slug }: TechIconProps) {
+  const icon = iconMap[slug]
+  if (!icon) {
+    return (
+      <svg viewBox="0 0 24 24" className="w-full h-full" fill="none" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
+        <path d="M8 12h8M12 8v8" strokeWidth="1.5" stroke="currentColor" />
+      </svg>
+    )
+  }
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className="w-full h-full"
+      fill="currentColor"
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label={icon.title}
+    >
+      <path d={icon.path} />
+    </svg>
+  )
+}
+
+export function Technologies() {
   return (
     <section
       id="technologies"
@@ -62,43 +96,24 @@ export function Technologies() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {categories.map((category) => {
-          const CategoryIcon = category.icon
-
-          return (
-            <div
-              key={category.title}
-              className="group p-6 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/40 hover:border-neutral-400 dark:hover:border-neutral-600 transition-all duration-200 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400">
-                    {category.title}
-                  </span>
-                  <CategoryIcon className="w-4 h-4 text-neutral-400 dark:text-neutral-500 group-hover:text-neutral-900 dark:group-hover:text-neutral-100 transition-colors" />
-                </div>
-
-                <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-6 leading-relaxed">
-                  {category.description}
-                </p>
-              </div>
-
-              {/* Technologies list */}
-              <div className="flex flex-wrap gap-2">
-                {category.items.map((tech) => (
-                  <span
-                    key={tech}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-xs font-mono text-neutral-800 dark:text-neutral-200 group-hover:border-neutral-300 dark:group-hover:border-neutral-700 transition-colors"
-                  >
-                    <Code2 className="w-3 h-3 text-neutral-400 dark:text-neutral-500" />
-                    <span>{tech}</span>
-                  </span>
-                ))}
-              </div>
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 gap-3 sm:gap-4">
+        {portfolioData.technologies.map((tech) => (
+          <div
+            key={tech.slug}
+            className="group flex flex-col items-center gap-3 p-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/40 hover:border-neutral-400 dark:hover:border-neutral-600 hover:bg-neutral-50 dark:hover:bg-neutral-800/60 transition-all duration-200 cursor-default"
+            title={tech.name}
+          >
+            {/* Icon — monochromatic, adapts to light/dark theme via currentColor */}
+            <div className="w-7 h-7 text-neutral-800 dark:text-neutral-200 group-hover:text-neutral-950 dark:group-hover:text-white transition-colors duration-200 flex-shrink-0">
+              <TechIcon slug={tech.slug} />
             </div>
-          )
-        })}
+
+            {/* Technology name */}
+            <span className="text-[11px] font-mono text-neutral-600 dark:text-neutral-400 group-hover:text-neutral-900 dark:group-hover:text-white transition-colors text-center leading-tight">
+              {tech.name}
+            </span>
+          </div>
+        ))}
       </div>
     </section>
   )

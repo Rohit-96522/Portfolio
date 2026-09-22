@@ -10,9 +10,10 @@ export interface Project {
   status?: string
 }
 
-export interface TechnologyItem {
+export interface Technology {
   name: string
-  category: 'Languages' | 'Frontend' | 'Backend' | 'Databases' | 'Tools'
+  /** Slug from https://simpleicons.org — used to fetch the SVG path */
+  slug: string
 }
 
 export interface Certification {
@@ -43,13 +44,7 @@ export interface PortfolioData {
     institution: string
   }
   social: SocialLinks
-  technologies: {
-    languages: string[]
-    frontend: string[]
-    backend: string[]
-    databases: string[]
-    tools: string[]
-  }
+  technologies: Technology[]
   projects: Project[]
   certifications: Certification[]
 }
@@ -71,17 +66,34 @@ export const portfolioData: PortfolioData = {
     linkedin: 'https://www.linkedin.com/in/ponnana-rohit-026b7a350/',
     leetcode: 'https://leetcode.com/u/ponnanarohit/',
     // Configurable placeholders
-    codechef: '', // Add CodeChef username or URL here if available
-    email: '', // Add email (e.g. 'mailto:your.email@example.com') if desired
+    codechef: 'https://www.codechef.com/users/ponnanarohit',
+    email: 'mailto:ponnanarohit507@gmail.com',
   },
 
-  technologies: {
-    languages: ['C', 'Python', 'Java', 'JavaScript'],
-    frontend: ['HTML', 'CSS', 'React', 'Tailwind CSS'],
-    backend: ['Node.js', 'Express.js'],
-    databases: ['MySQL', 'MongoDB', 'PostgreSQL'],
-    tools: ['Git', 'GitHub', 'VS Code', 'Postman'],
-  },
+  technologies: [
+    // Languages
+    { name: 'C', slug: 'c' },
+    { name: 'Python', slug: 'python' },
+    { name: 'Java', slug: 'openjdk' },
+    { name: 'JavaScript', slug: 'javascript' },
+    // Frontend
+    { name: 'HTML', slug: 'html5' },
+    { name: 'CSS', slug: 'css' },
+    { name: 'React', slug: 'react' },
+    { name: 'Tailwind CSS', slug: 'tailwindcss' },
+    // Backend
+    { name: 'Node.js', slug: 'nodedotjs' },
+    { name: 'Express.js', slug: 'express' },
+    // Databases
+    { name: 'MySQL', slug: 'mysql' },
+    { name: 'MongoDB', slug: 'mongodb' },
+    { name: 'PostgreSQL', slug: 'postgresql' },
+    // Tools
+    { name: 'Git', slug: 'git' },
+    { name: 'GitHub', slug: 'github' },
+    { name: 'VS Code', slug: 'vscode' },
+    { name: 'Postman', slug: 'postman' },
+  ],
 
   projects: [
     {
