@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Ponnana Rohit - B.Tech Computer Science student specializing in AI, Backend Development, and Full-Stack Development." />
+    <meta name="author" content="Ponnana Rohit" />
+    <meta name="keywords" content="Ponnana Rohit, Software Engineer, Full Stack, Backend Developer, AI, React, Node.js, Python, Portfolio" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ponnana Rohit | Developer Portfolio" />
+    <meta property="og:description" content="Computer Science student specializing in AI, Backend Systems, and Full-Stack Development." />
+    <meta property="og:type" content="website" />
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+    <title>Ponnana Rohit | Developer Portfolio</title>
+
+    <!-- Instant theme sync to prevent FOUC -->
+    <script>
+      (function() {
+        try {
+          const stored = localStorage.getItem('theme-preference') || 'system';
+          const isDark = stored === 'dark' || (stored === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100 transition-colors duration-200 min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
