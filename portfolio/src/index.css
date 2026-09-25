@@ -27,6 +27,11 @@
     color: #0a0a0a;
   }
 }
+  /* Prevent blinking text caret on non-editable elements */
+  h1, h2, h3, h4, h5, h6, p, span, div, section, article, li {
+    caret-color: transparent;
+  }
+
 
 /* Custom subtle monochromatic scrollbar */
 ::-webkit-scrollbar {
