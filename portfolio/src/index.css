@@ -2,6 +2,22 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Antigravity Framework Positioning Utilities */
+.antigravity-fixed-br {
+  position: fixed !important;
+  bottom: 1.5rem !important;
+  right: 1.5rem !important;
+  z-index: 99999 !important;
+}
+
+@media (min-width: 640px) {
+  .antigravity-fixed-br {
+    bottom: 2.5rem !important;
+    right: 2.5rem !important;
+  }
+}
+
+
 @layer base {
   html {
     scroll-behavior: smooth;

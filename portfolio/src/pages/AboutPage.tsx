@@ -39,28 +39,37 @@ export function AboutPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-20">
       {/* Header */}
-      <section aria-label="About introduction">
-        <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-4">
-          <span className="w-1.5 h-1.5 rounded-full bg-neutral-900 dark:bg-neutral-100" aria-hidden="true" />
-          <span>Who I am</span>
+      <section aria-label="About introduction" className="flex flex-col md:flex-row gap-12 items-start justify-between">
+        <div className="flex-1">
+          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-4">
+            <span className="w-1.5 h-1.5 rounded-full bg-neutral-900 dark:bg-neutral-100" aria-hidden="true" />
+            <span>Who I am</span>
+          </div>
+          <PageTitle 
+            title="About Me" 
+            className="text-3xl sm:text-5xl font-bold tracking-tight text-neutral-950 dark:text-white mb-6" 
+          />
+          <div className="max-w-2xl space-y-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p>
+              I am{' '}
+              <span className="text-neutral-950 dark:text-white font-semibold">{portfolioData.personal.name}</span> — a{' '}
+              {portfolioData.personal.title.toLowerCase()} passionate about building intelligent, real-world software that makes a difference.
+            </p>
+            <p>
+              I focus on clean architecture, meaningful user experiences, and impactful applications across AI, backend, and full-stack development.
+              When I am not coding, I explore competitive programming, dive into research papers, or prototype new ideas.
+            </p>
+            <p>
+              I believe in writing software that is not just functional, but thoughtfully engineered — code that solves real problems with elegance.
+            </p>
+          </div>
         </div>
-        <PageTitle 
-          title="About Me" 
-          className="text-3xl sm:text-5xl font-bold tracking-tight text-neutral-950 dark:text-white mb-6" 
-        />
-        <div className="max-w-3xl space-y-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          <p>
-            I am{' '}
-            <span className="text-neutral-950 dark:text-white font-semibold">{portfolioData.personal.name}</span> — a{' '}
-            {portfolioData.personal.title.toLowerCase()} passionate about building intelligent, real-world software that makes a difference.
-          </p>
-          <p>
-            I focus on clean architecture, meaningful user experiences, and impactful applications across AI, backend, and full-stack development.
-            When I am not coding, I explore competitive programming, dive into research papers, or prototype new ideas.
-          </p>
-          <p>
-            I believe in writing software that is not just functional, but thoughtfully engineered — code that solves real problems with elegance.
-          </p>
+        <div className="shrink-0 w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[26rem] xl:h-[26rem] mx-auto md:mx-0 flex items-center justify-center transition-transform hover:scale-[1.02] duration-500 group">
+          <img 
+            src="/favicon.svg" 
+            alt={portfolioData.personal.name}
+            className="w-full h-full object-contain dark:invert opacity-90 dark:opacity-50 drop-shadow-sm transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-3"
+          />
         </div>
       </section>
 

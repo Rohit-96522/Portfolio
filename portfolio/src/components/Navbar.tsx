@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { Menu, X } from "lucide-react"
 import { ThemeToggle } from "./ThemeToggle"
 import type { ThemePreference } from "../hooks/useTheme"
 import { portfolioData } from "../data/portfolioData"
@@ -20,7 +19,6 @@ const NAV_LINKS = [
 
 export function Navbar({ themePreference, onSelectTheme }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
 
   useEffect(() => {
@@ -31,20 +29,8 @@ export function Navbar({ themePreference, onSelectTheme }: NavbarProps) {
   }, [])
 
   useEffect(() => {
-    setMobileMenuOpen(false)
     window.scrollTo({ top: 0 })
   }, [location.pathname])
-
-  useEffect(() => {
-    const handleResize = () => { if (window.innerWidth >= 768) setMobileMenuOpen(false) }
-    const handleKeyDown = (e: KeyboardEvent) => { if (e.key === "Escape") setMobileMenuOpen(false) }
-    window.addEventListener("resize", handleResize)
-    window.addEventListener("keydown", handleKeyDown)
-    return () => {
-      window.removeEventListener("resize", handleResize)
-      window.removeEventListener("keydown", handleKeyDown)
-    }
-  }, [])
 
   const isActive = (to: string) => to === "/" ? location.pathname === "/" : location.pathname.startsWith(to)
 
@@ -89,37 +75,8 @@ export function Navbar({ themePreference, onSelectTheme }: NavbarProps) {
 
         <div className="flex items-center gap-3">
           <ThemeToggle themePreference={themePreference} onSelectTheme={onSelectTheme} />
-          <button
-            type="button"
-            onClick={() => setMobileMenuOpen((prev) => !prev)}
-            aria-expanded={mobileMenuOpen}
-            aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-            className="md:hidden p-2 rounded-md border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:text-neutral-950 dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors"
-          >
-            {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-          </button>
         </div>
       </div>
-
-      {mobileMenuOpen && (
-        <div className="md:hidden border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/98 dark:bg-neutral-950/98 backdrop-blur-md px-6 py-5">
-          <nav className="flex flex-col space-y-3" aria-label="Mobile Navigation">
-            {NAV_LINKS.map((link) => {
-              const active = isActive(link.to)
-              return (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className={active ? "text-base py-2 transition-colors flex items-center justify-between text-neutral-950 dark:text-white font-medium pl-2 border-l-2 border-neutral-900 dark:border-neutral-100" : "text-base py-2 transition-colors flex items-center justify-between text-neutral-600 dark:text-neutral-400 hover:text-neutral-950 dark:hover:text-white"}
-                >
-                  <span>{link.label}</span>
-                  {active && <span className="text-xs font-mono text-neutral-400">●</span>}
-                </Link>
-              )
-            })}
-          </nav>
-        </div>
-      )}
     </header>
   )
 }
