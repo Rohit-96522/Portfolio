@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Contact, Laptop, Paintbrush, Palette, Menu, X, Code2 } from 'lucide-react'
+import { Contact, Laptop, Paintbrush, Palette, Menu, X, Moon, Sun } from 'lucide-react'
+
 
 export function MobileNavBubble() {
   const [isOpen, setIsOpen] = useState(false)
@@ -72,7 +73,7 @@ export function MobileNavBubble() {
 
             return (
               <div
-                key={item.to}
+                key={item.label}
                 className="absolute top-0 left-0 w-full h-full flex items-center justify-center transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
                 style={{
                   transform: isOpen ? `translate(${x}px, ${y}px) scale(1)` : `translate(0px, 0px) scale(0)`,

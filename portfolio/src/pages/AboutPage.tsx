@@ -47,8 +47,17 @@ export function AboutPage() {
           </div>
           <PageTitle 
             title="About Me" 
-            className="text-3xl sm:text-5xl font-bold tracking-tight text-neutral-950 dark:text-white mb-6" 
+            className="text-3xl sm:text-5xl font-bold tracking-tight text-neutral-950 dark:text-white mb-6 md:mb-6" 
           />
+          
+          <div className="flex md:hidden mb-8 w-48 h-48 sm:w-64 sm:h-64 mx-auto items-center justify-center transition-transform hover:scale-[1.02] duration-500 group">
+            <img 
+              src="/favicon.svg" 
+              alt={portfolioData.personal.name}
+              className="w-full h-full object-contain dark:invert opacity-90 dark:opacity-50 drop-shadow-sm transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-3"
+            />
+          </div>
+
           <div className="max-w-2xl space-y-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <p>
               I am{' '}
@@ -64,7 +73,7 @@ export function AboutPage() {
             </p>
           </div>
         </div>
-        <div className="shrink-0 w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[26rem] xl:h-[26rem] mx-auto md:mx-0 flex items-center justify-center transition-transform hover:scale-[1.02] duration-500 group">
+        <div className="hidden md:flex shrink-0 w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[26rem] xl:h-[26rem] mx-auto md:mx-0 items-center justify-center transition-transform hover:scale-[1.02] duration-500 group">
           <img 
             src="/favicon.svg" 
             alt={portfolioData.personal.name}

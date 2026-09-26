@@ -73,7 +73,7 @@ export function Navbar({ themePreference, onSelectTheme }: NavbarProps) {
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="hidden sm:flex items-center gap-3">
           <ThemeToggle themePreference={themePreference} onSelectTheme={onSelectTheme} />
         </div>
       </div>

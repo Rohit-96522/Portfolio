@@ -22,10 +22,16 @@ export function useTheme() {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const mobileQuery = window.matchMedia('(max-width: 767px)')
 
     const applyTheme = (pref: ThemePreference) => {
-      const isDark =
+      let isDark =
         pref === 'dark' ? true : pref === 'light' ? false : mediaQuery.matches
+
+      // Force light mode on mobile screens
+      if (mobileQuery.matches) {
+        isDark = false
+      }
 
       setResolvedTheme(isDark ? 'dark' : 'light')
 
@@ -39,13 +45,16 @@ export function useTheme() {
     applyTheme(themePreference)
 
     const handleChange = () => {
-      if (themePreference === 'system') {
-        applyTheme('system')
-      }
+      applyTheme(themePreference)
     }
 
     mediaQuery.addEventListener('change', handleChange)
-    return () => mediaQuery.removeEventListener('change', handleChange)
+    mobileQuery.addEventListener('change', handleChange)
+    
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange)
+      mobileQuery.removeEventListener('change', handleChange)
+    }
   }, [themePreference])
 
   const setTheme = (pref: ThemePreference) => {
