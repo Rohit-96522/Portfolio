@@ -103,7 +103,7 @@ export function GitHubActivity() {
       className="py-16 md:py-24 border-t border-neutral-200/80 dark:border-neutral-800/80 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"
       aria-label="GitHub Activity"
     >
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
         <div>
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-2">
             <GithubIcon className="w-4 h-4" />
@@ -112,13 +112,13 @@ export function GitHubActivity() {
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-950 dark:text-white">
             GitHub Activity
           </h2>
-          <p className="mt-1 text-sm text-neutral-600 dark:text-neutral-400">
+          <p className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">
             Contributions and code frequency for{' '}
             <span className="font-mono text-neutral-900 dark:text-neutral-200">@{username}</span>
           </p>
         </div>
 
-        <div className="flex items-center gap-3 text-sm">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 text-sm">
           {totalContributions !== null && !isLoading && (
             <div className="px-3 py-1.5 rounded border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 text-xs font-mono text-neutral-700 dark:text-neutral-300">
               <span className="font-semibold text-neutral-950 dark:text-white">{totalContributions}</span> contributions in the last year
@@ -138,7 +138,7 @@ export function GitHubActivity() {
       </div>
 
       {/* Main Graph Card */}
-      <div className="relative rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/60 p-4 sm:p-6 overflow-hidden">
+      <div className="relative rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/60 p-3 sm:p-6 overflow-hidden">
         {isLoading ? (
           <div className="py-16 flex flex-col items-center justify-center text-neutral-500 dark:text-neutral-400">
             <Loader2 className="w-6 h-6 animate-spin mb-3 text-neutral-700 dark:text-neutral-300" />
@@ -194,7 +194,7 @@ export function GitHubActivity() {
             </div>
 
             {/* Footer with Monochromatic Legend */}
-            <div className="mt-4 pt-4 border-t border-neutral-100 dark:border-neutral-800/60 flex flex-wrap items-center justify-between text-xs text-neutral-500 dark:text-neutral-400 font-mono gap-2">
+            <div className="mt-4 pt-4 border-t border-neutral-100 dark:border-neutral-800/60 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-neutral-500 dark:text-neutral-400 font-mono gap-3 sm:gap-2">
               <span className="text-[11px]">Last 12 Months Activity</span>
               <div className="flex items-center gap-1.5">
                 <span className="text-[11px]">Less</span>

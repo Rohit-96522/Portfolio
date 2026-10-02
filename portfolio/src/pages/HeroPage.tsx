@@ -4,6 +4,7 @@ import { GithubIcon } from '../components/Icons'
 import { GitHubActivity } from '../components/GitHubActivity'
 import { Technologies } from '../components/Technologies'
 import { Contact } from '../components/Contact'
+import { VisitorCounter } from '../components/VisitorCounter'
 import { portfolioData } from '../data/portfolioData'
 import { PageTitle } from '../components/PageTitle'
 
@@ -66,6 +67,11 @@ export function HeroPage() {
       <GitHubActivity />
       <Technologies />
       <Contact />
+
+      {/* Visitor Counter */}
+      <section className="py-16 md:py-24 border-t border-neutral-200/80 dark:border-neutral-800/80 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+        <VisitorCounter />
+      </section>
     </div>
   )
 }

@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import Lenis from 'lenis'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { IntroAnimation } from './components/IntroAnimation'
 import { Navbar } from './components/Navbar'
 import { MobileNavBubble } from './components/MobileNavBubble'
+import { ScrollToTop } from './components/ScrollToTop'
 import { Footer } from './components/Footer'
 import { HeroPage } from './pages/HeroPage'
 import { AboutPage } from './pages/AboutPage'
@@ -14,6 +16,21 @@ import { useTheme } from './hooks/useTheme'
 export default function App() {
   const { themePreference, setTheme } = useTheme()
   const [introFinished, setIntroFinished] = useState(false)
+
+  useEffect(() => {
+    const lenis = new Lenis()
+    
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    
+    requestAnimationFrame(raf)
+    
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
 
   return (
     <BrowserRouter>
@@ -40,6 +57,7 @@ export default function App() {
           <Footer />
         </div>
         <div className={introFinished ? 'transition-opacity duration-700 ease-out opacity-100' : 'transition-opacity duration-700 ease-out opacity-0 pointer-events-none'}>
+          <ScrollToTop />
           <MobileNavBubble />
         </div>
       </div>

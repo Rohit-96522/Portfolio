@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { ThemeToggle } from "./ThemeToggle"
 import type { ThemePreference } from "../hooks/useTheme"
@@ -19,13 +19,38 @@ const NAV_LINKS = [
 
 export function Navbar({ themePreference, onSelectTheme }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false)
+  const lineRef = useRef<HTMLDivElement>(null)
   const location = useLocation()
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20)
+    let animationFrameId: number
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20)
+      
+      const updateLine = () => {
+        if (!lineRef.current) return
+        const scrollTop = window.scrollY
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight
+        
+        let scale = 1
+        if (docHeight > 0) {
+          // calculate how much is left to scroll (starts at 1, goes to 0)
+          const scrollPercent = scrollTop / docHeight
+          scale = Math.max(0, 1 - scrollPercent)
+        }
+        
+        lineRef.current.style.transform = `scaleX(${scale})`
+      }
+
+      animationFrameId = requestAnimationFrame(updateLine)
+    }
     window.addEventListener("scroll", handleScroll, { passive: true })
     handleScroll()
-    return () => window.removeEventListener("scroll", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      cancelAnimationFrame(animationFrameId)
+    }
   }, [])
 
   useEffect(() => {
@@ -76,6 +101,14 @@ export function Navbar({ themePreference, onSelectTheme }: NavbarProps) {
         <div className="hidden sm:flex items-center gap-3">
           <ThemeToggle themePreference={themePreference} onSelectTheme={onSelectTheme} />
         </div>
+      </div>
+
+      <div className="absolute -bottom-[1.5px] left-0 right-0 flex justify-center overflow-hidden">
+        <div 
+          ref={lineRef}
+          className="h-[1.5px] w-full bg-neutral-900 dark:bg-neutral-100 rounded-full" 
+          style={{ transformOrigin: "center", willChange: "transform" }}
+        />
       </div>
     </header>
   )
