@@ -109,42 +109,6 @@ export const portfolioData: PortfolioData = {
       liveUrl: '',
       status: 'Completed',
     },
-    {
-      id: 'pro-audit',
-      number: '02',
-      title: 'Pro Audit',
-      description:
-        'An AI-powered procurement intelligence system focused on document analysis, auditing, and intelligent procurement workflows.',
-      problemSolved:
-        'Automates time-consuming procurement audits by parsing unstructured PDF documents, detecting pricing deviations against contracts, and applying LLM-driven intelligence to flag compliance anomalies.',
-      technologies: ['Python', 'Flask', 'React', 'LLM APIs', 'PDF Parsing', 'REST API'],
-      githubUrl: 'https://github.com/Rohit-96522',
-      liveUrl: '',
-      status: 'Active',
-    },
-    {
-      id: 'crop-residue-marketplace',
-      number: '03',
-      title: 'Crop Residue Marketplace',
-      description:
-        'A platform connecting farmers, buyers, and logistics providers for agricultural crop-residue management and marketplace workflows.',
-      problemSolved:
-        'Tackles seasonal stubble burning by creating a commercial channel where farmers monetize agricultural waste, industrial buyers procure biomass, and logistics operators fulfill hauling contracts in real time.',
-      technologies: [
-        'React',
-        'TypeScript',
-        'Tailwind CSS',
-        'Node.js',
-        'Express.js',
-        'MongoDB / PostgreSQL',
-        'Firebase',
-        'Cloudinary',
-        'Socket.io',
-      ],
-      githubUrl: 'https://github.com/Rohit-96522',
-      liveUrl: '',
-      status: 'Active',
-    },
   ],
 
   certifications: [

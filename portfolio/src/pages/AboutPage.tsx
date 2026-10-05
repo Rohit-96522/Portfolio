@@ -1,4 +1,5 @@
-import { GraduationCap, MapPin, Cpu, Code2, Heart, Zap } from 'lucide-react'
+import { GraduationCap, MapPin, Cpu, Code2, Heart, Zap, Car, Palette } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { portfolioData } from '../data/portfolioData'
 import { PageTitle } from '../components/PageTitle'
 
@@ -35,29 +36,25 @@ const interests = [
   { icon: Heart, title: 'Open Source', desc: 'Contributing to the community, learning from others, and building in public.' },
 ]
 
+const hobbies = [
+  { icon: Car, title: 'Formula 1', desc: 'Following the fast-paced world of F1 racing, analyzing strategies and race dynamics.', path: '/f1' },
+  { icon: Palette, title: 'Sketching & Drawing', desc: 'Expressing creativity through sketching and drawing, bringing imagination to paper.', path: '/sketching' },
+]
+
 export function AboutPage() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 space-y-20">
       {/* Header */}
-      <section aria-label="About introduction" className="flex flex-col md:flex-row gap-12 items-start justify-between">
+      <section aria-label="About introduction" className="flex flex-col-reverse md:flex-row gap-12 items-start justify-between">
         <div className="flex-1">
           <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-neutral-900 dark:bg-neutral-100" aria-hidden="true" />
             <span>Who I am</span>
           </div>
-          <PageTitle 
-            title="About Me" 
-            className="text-3xl sm:text-5xl font-bold tracking-tight text-neutral-950 dark:text-white mb-6 md:mb-6" 
+          <PageTitle
+            title="About Me"
+            className="text-3xl sm:text-5xl font-bold tracking-tight text-neutral-950 dark:text-white mb-6"
           />
-          
-          <div className="flex md:hidden mb-8 w-48 h-48 sm:w-64 sm:h-64 mx-auto items-center justify-center transition-transform hover:scale-[1.02] duration-500 group">
-            <img 
-              src="/favicon.svg" 
-              alt={portfolioData.personal.name}
-              className="w-full h-full object-contain dark:invert opacity-90 dark:opacity-50 drop-shadow-sm transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-3"
-            />
-          </div>
-
           <div className="max-w-2xl space-y-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed">
             <p>
               I am{' '}
@@ -73,9 +70,9 @@ export function AboutPage() {
             </p>
           </div>
         </div>
-        <div className="hidden md:flex shrink-0 w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[26rem] xl:h-[26rem] mx-auto md:mx-0 items-center justify-center transition-transform hover:scale-[1.02] duration-500 group">
-          <img 
-            src="/favicon.svg" 
+        <div className="shrink-0 w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[26rem] xl:h-[26rem] mx-auto md:mx-0 flex items-center justify-center transition-transform hover:scale-[1.02] duration-500 group">
+          <img
+            src="/favicon.svg"
             alt={portfolioData.personal.name}
             className="w-full h-full object-contain dark:invert opacity-90 dark:opacity-50 drop-shadow-sm transition-transform duration-500 group-hover:scale-105 group-hover:-rotate-3"
           />
@@ -117,6 +114,26 @@ export function AboutPage() {
               <h3 className="text-base font-semibold text-neutral-900 dark:text-white mb-2">{title}</h3>
               <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">{desc}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Hobbies */}
+      <section aria-label="Hobbies">
+        <h2 className="text-xl font-semibold text-neutral-950 dark:text-white mb-6 tracking-tight">Hobbies</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {hobbies.map(({ icon: Icon, title, desc, path }) => (
+            <Link
+              to={path}
+              key={title}
+              className="p-6 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/40 hover:border-neutral-400 dark:hover:border-neutral-600 hover:shadow-sm transition-all duration-200 group block"
+            >
+              <div className="w-10 h-10 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 flex items-center justify-center mb-4 group-hover:border-neutral-400 dark:group-hover:border-neutral-600 transition-colors">
+                <Icon className="w-5 h-5 text-neutral-700 dark:text-neutral-300" />
+              </div>
+              <h3 className="text-base font-semibold text-neutral-900 dark:text-white mb-2 group-hover:underline decoration-neutral-300 dark:decoration-neutral-600 underline-offset-4">{title}</h3>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">{desc}</p>
+            </Link>
           ))}
         </div>
       </section>

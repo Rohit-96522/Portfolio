@@ -10,7 +10,6 @@ interface NavbarProps {
 }
 
 const NAV_LINKS = [
-  { label: "Hero", to: "/" },
   { label: "About", to: "/about" },
   { label: "Projects", to: "/projects" },
   { label: "Art", to: "/art" },
@@ -69,7 +68,7 @@ export function Navbar({ themePreference, onSelectTheme }: NavbarProps) {
           className="group flex items-center gap-2 font-mono text-sm tracking-widest uppercase font-semibold text-neutral-900 dark:text-neutral-100 hover:text-neutral-500 dark:hover:text-neutral-400 transition-colors"
           aria-label="Back to home"
         >
-          <span className="border border-neutral-300 dark:border-neutral-700 rounded px-1.5 py-0.5 group-hover:border-neutral-900 dark:group-hover:border-neutral-100 transition-colors">
+          <span className="inline-block border border-neutral-300 dark:border-neutral-700 rounded px-1.5 py-0.5 transition-all duration-300 group-hover:border-neutral-900 dark:group-hover:border-neutral-100 group-hover:bg-neutral-900 dark:group-hover:bg-white group-hover:text-white dark:group-hover:text-neutral-900 group-hover:-rotate-6 group-hover:scale-110">
             {portfolioData.personal.shortName}
           </span>
           <span className="hidden sm:inline tracking-normal font-sans font-medium text-xs text-neutral-500 dark:text-neutral-400">
@@ -103,10 +102,10 @@ export function Navbar({ themePreference, onSelectTheme }: NavbarProps) {
         </div>
       </div>
 
-      <div className="absolute -bottom-[1.5px] left-0 right-0 flex justify-center overflow-hidden">
+      <div className="absolute -bottom-[2.5px] left-0 right-0 flex justify-center overflow-hidden">
         <div 
           ref={lineRef}
-          className="h-[1.5px] w-full bg-neutral-900 dark:bg-neutral-100 rounded-full" 
+          className="h-[2.5px] w-full bg-neutral-900 dark:bg-neutral-100 rounded-full" 
           style={{ transformOrigin: "center", willChange: "transform" }}
         />
       </div>

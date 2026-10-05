@@ -5,8 +5,7 @@ const CODING_SYMBOLS = [
   ['{ ', ' }'],
   ['( ', ' )'],
   ['[ ', ' ]'],
-  ['/* ', ' */'],
-  ['', '_']
+  ['_', '_']
 ]
 
 interface PageTitleProps {

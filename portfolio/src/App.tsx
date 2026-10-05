@@ -11,6 +11,8 @@ import { AboutPage } from './pages/AboutPage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { ArtPage } from './pages/ArtPage'
 import { VisitorsPage } from './pages/VisitorsPage'
+import { F1Page } from './pages/F1Page'
+import { SketchingPage } from './pages/SketchingPage'
 import { useTheme } from './hooks/useTheme'
 
 export default function App() {
@@ -51,6 +53,8 @@ export default function App() {
               <Route path="/projects" element={<ProjectsPage />} />
               <Route path="/art" element={<ArtPage />} />
               <Route path="/visitors" element={<VisitorsPage />} />
+              <Route path="/f1" element={<F1Page />} />
+              <Route path="/sketching" element={<SketchingPage />} />
             </Routes>
           </main>
 
