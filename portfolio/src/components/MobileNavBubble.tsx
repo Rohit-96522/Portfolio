@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { User, Laptop, Palette, Users } from 'lucide-react'
+import { User, Laptop, Palette, Users, Grid } from 'lucide-react'
 
 const PrIcon = ({ className }: { className?: string; strokeWidth?: number | string }) => (
   <span className={`font-mono font-bold flex items-center justify-center tracking-tighter ${className}`} style={{ fontSize: '14px', lineHeight: 1 }}>
@@ -40,7 +40,7 @@ export function MobileNavBubble() {
               
               <div 
                 className={`overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] flex items-center ${
-                  isActive ? 'max-w-32 ml-2 opacity-100' : 'max-w-0 ml-0 opacity-0'
+                  isActive ? 'max-w-36 ml-2 opacity-100' : 'max-w-0 ml-0 opacity-0'
                 }`}
               >
                 <span className="text-sm font-semibold whitespace-nowrap">

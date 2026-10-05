@@ -6,6 +6,7 @@ import { Navbar } from './components/Navbar'
 import { MobileNavBubble } from './components/MobileNavBubble'
 import { ScrollToTop } from './components/ScrollToTop'
 import { Footer } from './components/Footer'
+import { ExitIntentModal } from './components/ExitIntentModal'
 import { HeroPage } from './pages/HeroPage'
 import { AboutPage } from './pages/AboutPage'
 import { ProjectsPage } from './pages/ProjectsPage'
@@ -13,6 +14,7 @@ import { ArtPage } from './pages/ArtPage'
 import { VisitorsPage } from './pages/VisitorsPage'
 import { F1Page } from './pages/F1Page'
 import { SketchingPage } from './pages/SketchingPage'
+import { PixelProjectsPage } from './pages/PixelProjectsPage'
 import { useTheme } from './hooks/useTheme'
 
 export default function App() {
@@ -51,6 +53,7 @@ export default function App() {
               <Route path="/" element={<HeroPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/pixels" element={<PixelProjectsPage />} />
               <Route path="/art" element={<ArtPage />} />
               <Route path="/visitors" element={<VisitorsPage />} />
               <Route path="/f1" element={<F1Page />} />
@@ -63,6 +66,7 @@ export default function App() {
         <div className={introFinished ? 'transition-opacity duration-700 ease-out opacity-100' : 'transition-opacity duration-700 ease-out opacity-0 pointer-events-none'}>
           <ScrollToTop />
           <MobileNavBubble />
+          <ExitIntentModal />
         </div>
       </div>
     </BrowserRouter>
