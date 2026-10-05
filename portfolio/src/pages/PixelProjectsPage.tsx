@@ -71,7 +71,7 @@ export function PixelProjectsPage() {
     const hasPixels = pixels.some(p => p !== 'transparent')
     if (!hasPixels) return alert('Please draw something on the canvas.')
     if (!description.trim()) return alert('Please enter a project description.')
-    if (link.trim() !== '' && !isValidUrl(link)) return alert('Please enter a valid project URL (e.g., https://github.com/...)')
+    if (link.trim() !== '' && !isValidUrl(link)) return alert('Please enter a valid project URL (e.g., https://example.com)')
 
     setIsPublishing(true)
     try {
@@ -186,7 +186,7 @@ export function PixelProjectsPage() {
                 type="url"
                 value={link}
                 onChange={e => setLink(e.target.value)}
-                placeholder="https://github.com/... (optional)"
+                placeholder="https://... (optional)"
                 className="w-full bg-transparent border border-neutral-200 dark:border-neutral-800 rounded p-3 text-sm focus:outline-none focus:border-neutral-900 dark:focus:border-white transition-colors"
               />
             </div>

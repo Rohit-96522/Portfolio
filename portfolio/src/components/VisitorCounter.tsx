@@ -74,7 +74,7 @@ function SegmentDigit({ digit, size = 48 }: SegmentDigitProps) {
   ]
 
   return (
-    <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} xmlns="http://www.w3.org/2000/svg">
+    <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} xmlns="http://www.w3.org/2000/svg" style={{ width: w, height: h, minWidth: w }}>
       <defs>
         <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="2" result="blur" />
@@ -101,9 +101,9 @@ export function VisitorCounter() {
     const namespace = 'ponnana-rohit-portfolio'
     const key = 'visitors'
 
-    // Check if this session already counted
+    // Check if this browser already counted
     const sessionKey = 'visitor-counted'
-    const alreadyCounted = sessionStorage.getItem(sessionKey)
+    const alreadyCounted = localStorage.getItem(sessionKey)
 
     const fetchCount = async () => {
       try {
@@ -111,7 +111,7 @@ export function VisitorCounter() {
           // Increment and get count
           const res = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
           const data = await res.json()
-          sessionStorage.setItem(sessionKey, 'true')
+          localStorage.setItem(sessionKey, 'true')
           setCount(data.count ?? 0)
         } else {
           // Just get current count without incrementing
@@ -125,7 +125,7 @@ export function VisitorCounter() {
         const newCount = alreadyCounted ? stored : stored + 1
         if (!alreadyCounted) {
           localStorage.setItem('visitor-count', String(newCount))
-          sessionStorage.setItem(sessionKey, 'true')
+          localStorage.setItem(sessionKey, 'true')
         }
         setCount(newCount)
       } finally {
@@ -192,7 +192,7 @@ export function VisitorCounter() {
           {isLoading ? (
             <div className="flex items-center gap-2 sm:gap-3">
               {[...Array(6)].map((_, i) => (
-                <div key={i} className="animate-pulse">
+                <div key={i} className="animate-pulse shrink-0">
                   <SegmentDigit digit="-" size={36} />
                 </div>
               ))}
@@ -202,7 +202,7 @@ export function VisitorCounter() {
               {digits.split('').map((d, i) => (
                 <div
                   key={i}
-                  className="transition-all duration-150"
+                  className="transition-all duration-150 shrink-0"
                   style={{
                     animationDelay: `${i * 60}ms`,
                   }}
