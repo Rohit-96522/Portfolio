@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { User, Laptop, Palette, Users, Grid } from 'lucide-react'
+import { User, Laptop, Palette, Users } from 'lucide-react'
 
 const PrIcon = ({ className }: { className?: string; strokeWidth?: number | string }) => (
   <span className={`font-mono font-bold flex items-center justify-center tracking-tighter ${className}`} style={{ fontSize: '14px', lineHeight: 1 }}>
