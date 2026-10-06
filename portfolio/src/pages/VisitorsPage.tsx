@@ -203,9 +203,9 @@ export function VisitorsPage() {
                       href={project.link} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-emerald-600 dark:text-emerald-400 hover:underline mb-6 w-fit"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-mono hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors mb-6 w-fit"
                     >
-                      View Project <ArrowUpRight className="w-3 h-3" />
+                      View Project <ArrowUpRight className="w-3.5 h-3.5" />
                     </a>
                   )}
 
