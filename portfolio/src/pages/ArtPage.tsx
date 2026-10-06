@@ -3,13 +3,10 @@ import gsap from 'gsap'
 import { PageTitle } from '../components/PageTitle'
 
 const artworks = [
-  { id: 1, title: 'SKETCH 01', url: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=400&h=500' },
-  { id: 2, title: 'SKETCH 02', url: 'https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&q=80&w=400&h=500' },
-  { id: 3, title: 'SKETCH 03', url: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=400&h=500' },
-  { id: 4, title: 'SKETCH 04', url: 'https://images.unsplash.com/photo-1578301978693-85fa9c026f33?auto=format&fit=crop&q=80&w=400&h=500' },
-  { id: 5, title: 'SKETCH 05', url: 'https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?auto=format&fit=crop&q=80&w=400&h=500' },
-  { id: 6, title: 'SKETCH 06', url: 'https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?auto=format&fit=crop&q=80&w=400&h=500' },
-  { id: 7, title: 'SKETCH 07', url: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&q=80&w=400&h=500' },
+  { id: 1, title: 'DAREDEVIL', url: '/art/daredevil.jpeg' },
+  { id: 2, title: 'MEOW', url: '/art/meow.png' },
+  { id: 3, title: 'MOON KNIGHT', url: '/art/moon knight.jpeg' },
+  { id: 4, title: 'SPIDERMAN', url: '/art/spiderman.png' },
 ]
 
 export function ArtPage() {
