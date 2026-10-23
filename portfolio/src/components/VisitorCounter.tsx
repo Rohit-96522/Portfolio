@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Eye } from 'lucide-react'
+import { supabase } from '../lib/supabase'
 
 // 7-segment display mapping for digits 0-9
 // Segments: a(top), b(top-right), c(bottom-right), d(bottom), e(bottom-left), f(top-left), g(middle)
@@ -97,37 +98,28 @@ export function VisitorCounter() {
   const [animatedDigits, setAnimatedDigits] = useState<string>('')
 
   useEffect(() => {
-    // Use a free counter API to track real visitors
-    const namespace = 'ponnana-rohit-portfolio'
-    const key = 'visitors'
-
-    // Check if this browser already counted
     const sessionKey = 'visitor-counted'
     const alreadyCounted = localStorage.getItem(sessionKey)
 
     const fetchCount = async () => {
       try {
         if (!alreadyCounted) {
-          // Increment and get count
-          const res = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`)
-          const data = await res.json()
           localStorage.setItem(sessionKey, 'true')
-          setCount(data.count ?? 0)
+          const { data, error } = await supabase.rpc('increment_visits')
+          if (error) throw error
+          setCount(Number(data))
         } else {
-          // Just get current count without incrementing
-          const res = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}`)
-          const data = await res.json()
-          setCount(data.count ?? 0)
+          const { data, error } = await supabase
+            .from('visitor_counter')
+            .select('count')
+            .eq('id', 1)
+            .single()
+          if (error) throw error
+          setCount(Number(data.count))
         }
-      } catch {
-        // Fallback: use localStorage-based count
-        const stored = parseInt(localStorage.getItem('visitor-count') || '0', 10)
-        const newCount = alreadyCounted ? stored : stored + 1
-        if (!alreadyCounted) {
-          localStorage.setItem('visitor-count', String(newCount))
-          localStorage.setItem(sessionKey, 'true')
-        }
-        setCount(newCount)
+      } catch (error) {
+        console.error('Error fetching visitor count:', error)
+        setCount(null)
       } finally {
         setIsLoading(false)
       }
@@ -166,6 +158,10 @@ export function VisitorCounter() {
 
     return () => clearInterval(timer)
   }, [count])
+
+  if (!isLoading && count === null) {
+    return null
+  }
 
   const digits = animatedDigits || '000000'
 
